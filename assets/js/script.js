@@ -8,17 +8,17 @@ const jump = () => {
 }
 
 const loop = setInterval(() => {
-    const pipe = document.querySelector('.pipe');
+    const koopa = document.querySelector('.koopa');
     const mario = document.querySelector('.mario');
     
-    const pipePosition = pipe.offsetLeft;
+    const koopaPosition = koopa.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
     console.log(marioPosition);
     
-    if (pipePosition <= 105 && pipePosition > 0 && marioPosition < 80) {
-        pipe.style.animation = 'none';
-        pipe.style.left = `${pipePosition}px`;
+    if (koopaPosition <= -10 && marioPosition < 40) {
+        koopa.style.animation = 'none';
+        koopa.style.left = `${koopaPosition}px`;
 
         mario.style.animation = 'none';
         mario.style.bottom = `${marioPosition}px`;
