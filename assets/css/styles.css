@@ -36,6 +36,57 @@ header, footer {
     padding: 3.5rem;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 0.3fr;
+}
+
+.game-board {
+    min-width: 50%;
+    width: auto;
+    min-height: 40rem;
+    margin: 2rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-image: url(../img/mario-background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+    border: var(--black-color) solid;
+}
+
+.clouds {
+    position: absolute;
+    width: 30rem;
+    animation: clouds-animation 15s infinite linear;
+    top: 2rem;
+}
+
+.mario {
+    width: 8rem;
+    position: absolute;
+    bottom: 4.3rem;
+}
+
+.jump {
+    animation: jump 500ms ease-out;
+}
+
+.koopa {
+    position: absolute;
+    bottom: 4.3rem;
+    width: 5rem;
+    animation: koopa-animation 1.5s infinite linear;
+}
+
+.info {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+}
+
 .name-game {
     display: flex;
     flex-flow: column;
@@ -47,31 +98,6 @@ header, footer {
     text-align: center;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 0.3fr;
-}
-
-.info {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-evenly;
-}
-
-.game-board {
-    min-width: 50%;
-    min-height: 50rem;
-    margin: 1rem;    
-    position: relative;
-    overflow: hidden;
-    background-image: url(../img/mario-background.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border-radius: 1rem;
-    border: var(--black-color) solid;
-}
-
 .description {
     flex-flow: column;
     align-items: center;
@@ -80,7 +106,7 @@ header, footer {
     border-radius: 1rem;
     border: var(--black-color) solid;
     padding: 1rem 1.5rem;
-    height: 10rem;
+    height: 15rem;
     color: var(--black-color);
     margin: 1rem 0.5rem;
 }
@@ -94,29 +120,6 @@ header, footer {
     justify-content: space-evenly;
     align-self: center;
     margin: 3rem 0.5rem;
-}
-
-.koopa {
-    position: absolute;
-    bottom: 7rem;
-    width: 5rem;
-    animation: koopa-animation 1.5s infinite linear;
-}
-
-.mario {
-    width: 8rem;
-    position: absolute;
-    bottom: 7rem;
-}
-
-.jump {
-    animation: jump 500ms ease-out;
-}
-
-.clouds {
-    position: absolute;
-    width: 30rem;
-    animation: clouds-animation 15s infinite linear;
 }
 
 .question-block {
@@ -135,23 +138,23 @@ header, footer {
 
 @keyframes jump {
     0% {
-        bottom: 7rem;
+        bottom: 4.3rem;
     }
 
     40% {
-        bottom: 18rem;
+        bottom: 15rem;
     }
 
     50% {
-        bottom: 18rem;
+        bottom: 15rem;
     }
 
     60% {
-        bottom: 18rem;
+        bottom: 15rem;
     }
 
     100% {
-        bottom: 7rem;
+        bottom: 4.3rem;
     }
 }
 

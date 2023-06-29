@@ -16,8 +16,10 @@ const loop = setInterval(() => {
     const koopaPosition = koopa.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
     const nuvensPosition = nuvens.offsetLeft;
+
+    console.log(koopaPosition);
     
-    if (koopaPosition <= 95 && koopaPosition > 0 && marioPosition < 220) {
+    if (koopaPosition <= 90 && koopaPosition > 0 && marioPosition < 160) {
         koopa.style.animation = 'none';
         koopa.style.left = `${koopaPosition}px`;
 
@@ -35,8 +37,13 @@ const loop = setInterval(() => {
         koopa.src = './assets/img/koopa.png'
 
         clearInterval(loop);
+        document.addEventListener('keydown', refreshPage);
     }
     
 }, 10);
+
+const refreshPage = () => {
+    window.location.reload();
+}
 
 document.addEventListener('keydown', jump);
