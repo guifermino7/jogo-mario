@@ -57,15 +57,20 @@ header, footer {
     border: var(--black-color) solid;
 }
 
-.clouds {
+.clouds-intro {
     position: absolute;
-    width: 30rem;
+    width: 23rem;
     top: 2rem;
     left: 35rem;
 }
 
+.clouds {
+    position: absolute;
+    display: none;
+}
+
 .mario {
-    width: 5.8rem;
+    width: 3.8rem;
     position: absolute;
     bottom: 4.3rem;
     left: 1rem;
@@ -125,17 +130,20 @@ header, footer {
 
 .buttons {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    min-height: 4.438rem;
 }
 
 .start-button {
-    width: 7rem;
+    position: relative;
+    width: 10rem;
     cursor: pointer;
 }
 
 .refresh-button {
-    width: 6.9rem;
+    display: none;
+    position: relative;
+    width: 10rem;
     cursor: pointer;
 }
 
