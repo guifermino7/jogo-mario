@@ -14,26 +14,31 @@ const startGame = () => {
     const koopa = document.querySelector('.koopa');
     const mario = document.querySelector('.mario');
     const nuvens = document.querySelector('.clouds');
-    const nuvensIntro = document.querySelector('.clouds-intro');
+    const nuvensIntroOne = document.querySelector('.clouds-intro-one');
+    const nuvensIntroTwo = document.querySelector('.clouds-intro-two');
     const startButton = document.querySelector('.start-button');
+    const refreshButton = document.querySelector('.refresh-button');
+    const marioLogo = document.querySelector('.mario-logo');
+
+    marioLogo.style.setProperty('display', 'none');
+
+    nuvensIntroOne.style.setProperty('display', 'none');
+    nuvensIntroTwo.style.setProperty('display', 'none');
 
     startButton.style.setProperty('display', 'none');
+    refreshButton.style.setProperty('display', 'none');
 
     mario.src = './assets/img/mario.gif';
-
     mario.style.setProperty('width', '5.8rem');
 
     koopa.style.setProperty('display', 'flex');
     koopa.style.setProperty('animation', 'koopa-animation 1.5s infinite linear');
-
-    nuvensIntro.style.setProperty('display', 'none');
 
     nuvens.style.setProperty('display', 'flex');
     nuvens.style.setProperty('position', 'absolute');
     nuvens.style.setProperty('width', '30rem');
     nuvens.style.setProperty('top', '2rem');
     nuvens.style.setProperty('animation', 'clouds-animation 15s infinite linear');
-
 }
 
 const loop = setInterval(() => {
@@ -42,33 +47,29 @@ const loop = setInterval(() => {
     const mario = document.querySelector('.mario');
     const nuvens = document.querySelector('.clouds');
     const refreshButton = document.querySelector('.refresh-button');
+    const gameOver = document.querySelector('.game-board');
     
     const koopaPosition = koopa.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
-    const nuvensPosition = nuvens.offsetLeft;
 
-    refreshButton.style.setProperty('display', 'none');
+    if (koopaPosition <= 88 && koopaPosition > 0 && marioPosition < 160) {
 
-    if (koopaPosition <= 88 && koopaPosition > 0 && marioPosition < 180) {
+        gameOver.style.setProperty('background-image', 'url(./assets/img/game-over-background.png)');
 
         refreshButton.style.setProperty('display', 'flex');
 
+        nuvens.style.setProperty('display', 'none');
+
+        koopa.src = './assets/img/koopa.png';
         koopa.style.setProperty('animation', 'none');
         koopa.style.setProperty('left', `${koopaPosition}px`);
 
+        mario.src = './assets/img/game-over.gif';
         mario.style.setProperty('animation', 'none');
         mario.style.setProperty('bottom', `${marioPosition}px`);
-
-        nuvens.style.setProperty('animation', 'none');
-        nuvens.style.setProperty('left', `${nuvensPosition}px`);
-
-        mario.src = './assets/img/game-over.png';
-        
+        mario.style.setProperty('z-index', '1');
         mario.style.setProperty('width', '3.6rem');
-        mario.style.setProperty('rotate', '-3.5deg');
         mario.style.setProperty('margin-left', '2rem');
-
-        koopa.src = './assets/img/koopa.png';
 
         clearInterval(loop);
     }
@@ -80,8 +81,11 @@ const resetGame = () => {
     const koopa = document.querySelector('.koopa');
     const mario = document.querySelector('.mario');
     const nuvens = document.querySelector('.clouds');
-    const nuvensIntro = document.querySelector('.clouds-intro');
+    const nuvensIntroOne = document.querySelector('.clouds-intro-one');
+    const nuvensIntroTwo = document.querySelector('.clouds-intro-two');
     const refreshButton = document.querySelector('.refresh-button');
+    const marioLogo = document.querySelector('.mario-logo');
+    const gameOver = document.querySelector('.game-board');
 
     const jump = () => {
         const mario = document.querySelector('.mario');
@@ -96,28 +100,32 @@ const resetGame = () => {
 
     if (nuvens.style.display = 'none') {
 
+        refreshButton.style.setProperty('display', 'none');
+
+        gameOver.style.removeProperty('background-image', 'url(./assets/img/game-over-background.png)');
+        gameOver.style.setProperty('background-image', 'url(./assets/img/mario-background.png)')
+
         mario.src = './assets/img/mario.gif';
-
-        koopa.style.removeProperty('animation');
-        koopa.style.removeProperty('left');
-
         mario.style.removeProperty('animation');
         mario.style.removeProperty('bottom');
-
-        nuvens.style.removeProperty('animation');
-        nuvens.style.removeProperty('left');
-        
         mario.style.removeProperty('width');
         mario.style.removeProperty('rotate');
         mario.style.removeProperty('margin-left');
-
-
         mario.style.setProperty('width', '5.8rem');
 
+        koopa.src = './assets/img/koopa.gif';
+        koopa.style.removeProperty('animation');
+        koopa.style.removeProperty('left');
         koopa.style.setProperty('display', 'flex');
         koopa.style.setProperty('animation', 'koopa-animation 1.5s infinite linear');
 
-        nuvensIntro.style.setProperty('display', 'none');
+        nuvens.style.removeProperty('animation');
+        nuvens.style.removeProperty('left');
+
+        nuvensIntroOne.style.setProperty('display', 'none');
+        nuvensIntroTwo.style.setProperty('display', 'none');
+
+        marioLogo.style.setProperty('display', 'none');
 
         nuvens.style.setProperty('display', 'flex');
         nuvens.style.setProperty('position', 'absolute');
@@ -134,28 +142,26 @@ const resetGame = () => {
         
         const koopaPosition = koopa.offsetLeft;
         const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
-        const nuvensPosition = nuvens.offsetLeft;
     
-        if (koopaPosition <= 88 && koopaPosition > 0 && marioPosition < 180) {
+        if (koopaPosition <= 88 && koopaPosition > 0 && marioPosition < 160) {
+
+            mario.src = './assets/img/game-over.gif';
+            mario.style.setProperty('animation', 'none');
+            mario.style.setProperty('animation', 'mario-dies 180ms ease-in-out infinite');
+            mario.style.setProperty('bottom', `${marioPosition}px`);
+            mario.style.setProperty('z-index', '1');
+            mario.style.setProperty('width', '3.6rem');
+            mario.style.setProperty('margin-left', '2rem');
+
+            gameOver.style.setProperty('background-image', 'url(./assets/img/game-over-background.png)');
 
             refreshButton.style.setProperty('display', 'flex');
 
-            koopa.style.setProperty('animation', 'none');
-            koopa.style.setProperty('left', `${koopaPosition}px`);
-
-            mario.style.setProperty('animation', 'none');
-            mario.style.setProperty('bottom', `${marioPosition}px`);
-
-            nuvens.style.setProperty('animation', 'none');
-            nuvens.style.setProperty('left', `${nuvensPosition}px`);
-
-            mario.src = './assets/img/game-over.png';
-            
-            mario.style.setProperty('width', '3.6rem');
-            mario.style.setProperty('rotate', '-3.5deg');
-            mario.style.setProperty('margin-left', '2rem');
+            nuvens.style.setProperty('display', 'none');
 
             koopa.src = './assets/img/koopa.png';
+            koopa.style.setProperty('animation', 'none');
+            koopa.style.setProperty('left', `${koopaPosition}px`);;
 
             clearInterval(loop);
         }

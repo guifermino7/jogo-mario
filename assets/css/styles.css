@@ -27,6 +27,14 @@ header, footer {
     text-align: center;
 }
 
+.mario-logo {
+    position: relative;
+    width: 40rem;
+    left: 17rem;
+    top: 7rem;
+    z-index: 1;
+}
+
 .mario-jump {
     display: flex;
     flex-flow: column;
@@ -48,7 +56,6 @@ header, footer {
     margin: 2rem;
     position: relative;
     overflow: hidden;
-    z-index: 1;
     background-image: url(../img/mario-background.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -57,11 +64,18 @@ header, footer {
     border: var(--black-color) solid;
 }
 
-.clouds-intro {
+.clouds-intro-one {
     position: absolute;
     width: 23rem;
     top: 2rem;
-    left: 35rem;
+    left: 45rem;
+}
+
+.clouds-intro-two {
+    position: absolute;
+    width: 8rem;
+    left: 10rem;
+    top: 6rem;
 }
 
 .clouds {
@@ -74,6 +88,7 @@ header, footer {
     position: absolute;
     bottom: 4.3rem;
     left: 1rem;
+    /* animation: mario-dies 350ms infinite linear; */
 }
 
 .jump {
@@ -84,7 +99,7 @@ header, footer {
     display: none;
     position: absolute;
     bottom: 4.3rem;
-    width: 5rem;
+    width: 3.7rem;
 }
 
 .info {
@@ -135,14 +150,14 @@ header, footer {
 }
 
 .start-button {
-    position: relative;
+    position: absolute;
     width: 10rem;
     cursor: pointer;
 }
 
 .refresh-button {
     display: none;
-    position: relative;
+    position: absolute;
     width: 10rem;
     cursor: pointer;
 }
@@ -190,5 +205,15 @@ header, footer {
 
     to {
         right: 100%;
+    }
+}
+
+@keyframes mario-dies {
+    from {
+        left: 1rem;
+    }
+
+    to {
+        left: 1.2rem;
     }
 }
