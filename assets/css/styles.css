@@ -27,12 +27,8 @@ header, footer {
     text-align: center;
 }
 
-.mario-logo {
-    position: relative;
-    width: 40rem;
-    left: 17rem;
-    top: 7rem;
-    z-index: 1;
+span {
+    color: white;
 }
 
 .mario-jump {
@@ -64,11 +60,40 @@ header, footer {
     border: var(--black-color) solid;
 }
 
+.score-board {
+    background: rgba(3, 3, 3, 0.1);
+    height: 3rem;
+    width: 11rem;
+    position: absolute;
+    left: 60rem;
+    top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.score {
+    margin-right: 0.5rem;
+    color: #fff;
+}
+
+.mario-logo {
+    position: relative;
+    width: 40rem;
+    left: 17rem;
+    top: 7rem;
+    z-index: 2;
+}
+
 .clouds-intro-one {
     position: absolute;
     width: 23rem;
     top: 2rem;
     left: 45rem;
+    z-index: 1;
 }
 
 .clouds-intro-two {
@@ -81,6 +106,7 @@ header, footer {
 .clouds {
     position: absolute;
     display: none;
+    z-index: 1;
 }
 
 .mario {
@@ -88,7 +114,6 @@ header, footer {
     position: absolute;
     bottom: 4.3rem;
     left: 1rem;
-    /* animation: mario-dies 350ms infinite linear; */
 }
 
 .jump {

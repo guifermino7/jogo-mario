@@ -1,9 +1,91 @@
+/* function scoring() {
+
+    const startTimer = () => {
+        let seconds = 0;
+        let tens = 0;
+        let appendTens = document.getElementsByClassName("tens")[0];
+        let appendSeconds = document.getElementsByClassName("seconds")[0];
+        tens++;
+    
+        if (tens <= 9) {
+            appendTens.innerHTML = "0" + tens;
+        }
+    
+        if (tens > 9) {
+            appendTens.innerHTML = tens;
+        }
+    
+        if (tens > 99) {
+            console.log("seconds");
+            seconds++;
+            appendSeconds.innerHTML = "0" + seconds;
+            tens = 0;
+            appendTens.innerHTML = "00";
+        }
+    
+        if (seconds > 9) {
+            appendSeconds.innerHTML = seconds;
+        }
+    }
+} */
+
+let seconds = 0;
+let tens = 0;
+let appendTens = document.getElementsByClassName("tens")[0];
+let appendSeconds = document.getElementsByClassName("seconds")[0];
+let Interval;
+
+/* buttonStart.onclick = function () {
+    clearInterval(Interval);
+    Interval = setInterval(startTimer, 10);
+}
+
+buttonStop.onclick = function() {
+   clearInterval(Interval);
+}
+
+buttonReset.onclick = function () {
+    clearInterval(Interval);
+    tens = 0;
+    seconds = 0;
+    appendTens.innerHTML = "00";
+    appendSeconds.innerHTML = "00";
+} */
+
+/* function startTimer() {
+    let seconds = 0;
+    let tens = 0;
+    let appendTens = document.getElementsByClassName("tens")[0];
+    let appendSeconds = document.getElementsByClassName("seconds")[0];
+    tens++;
+
+    if (tens <= 9) {
+        appendTens.innerHTML = "0" + tens;
+    }
+
+    if (tens > 9) {
+        appendTens.innerHTML = tens;
+    }
+
+    if (tens > 99) {
+        console.log("seconds");
+        seconds++;
+        appendSeconds.innerHTML = "0" + seconds;
+        tens = 0;
+        appendTens.innerHTML = "00";
+    }
+
+    if (seconds > 9) {
+        appendSeconds.innerHTML = seconds;
+    }
+} */
+
 const startGame = () => {
 
     const jump = () => {
         const mario = document.querySelector('.mario');
         mario.classList.add('jump');
-    
+
         setTimeout(() => {
             mario.classList.remove('jump');
         }, 500);
@@ -39,16 +121,85 @@ const startGame = () => {
     nuvens.style.setProperty('width', '30rem');
     nuvens.style.setProperty('top', '2rem');
     nuvens.style.setProperty('animation', 'clouds-animation 15s infinite linear');
+
+    let appendTens = document.getElementsByClassName("tens")[0];
+    let appendSeconds = document.getElementsByClassName("seconds")[0];
+    let seconds = 0;
+    let tens = 0;
+    let Interval;
+
+    if (koopa.style.animation = 'koopa-animation 1.5s infinite linear') {
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
+    }
+
+    function startTimer() {
+        tens++;
+
+        if (tens <= 9) {
+            appendTens.innerHTML = "0" + tens;
+        }
+
+        if (tens > 9) {
+            appendTens.innerHTML = tens;
+        }
+
+        if (tens > 99) {
+            seconds++;
+            appendSeconds.innerHTML = "0" + seconds;
+            tens = 0;
+            appendTens.innerHTML = "00";
+        }
+
+        if (seconds > 9) {
+            appendSeconds.innerHTML = seconds;
+        }
+    }
+
+    const loop = setInterval(() => {
+
+        const koopa = document.querySelector('.koopa');
+        const mario = document.querySelector('.mario');
+        const nuvens = document.querySelector('.clouds');
+        const refreshButton = document.querySelector('.refresh-button');
+        const gameOver = document.querySelector('.game-board');
+    
+        const koopaPosition = koopa.offsetLeft;
+        const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
+    
+        if (koopaPosition <= 88 && koopaPosition > 0 && marioPosition < 160) {
+    
+            gameOver.style.setProperty('background-image', 'url(./assets/img/game-over-background.png)');
+    
+            refreshButton.style.setProperty('display', 'flex');
+    
+            nuvens.style.setProperty('display', 'none');
+    
+            koopa.src = './assets/img/koopa.png';
+            koopa.style.setProperty('animation', 'none');
+            koopa.style.setProperty('left', `${koopaPosition}px`);
+    
+            mario.src = './assets/img/game-over.gif';
+            mario.style.setProperty('animation', 'none');
+            mario.style.setProperty('bottom', `${marioPosition}px`);
+            mario.style.setProperty('z-index', '1');
+            mario.style.setProperty('width', '3.6rem');
+            mario.style.setProperty('margin-left', '2rem');
+    
+            clearInterval(loop);
+        }
+
+    }, 10);
 }
 
-const loop = setInterval(() => {
+/* const loop = setInterval(() => {
 
     const koopa = document.querySelector('.koopa');
     const mario = document.querySelector('.mario');
     const nuvens = document.querySelector('.clouds');
     const refreshButton = document.querySelector('.refresh-button');
     const gameOver = document.querySelector('.game-board');
-    
+
     const koopaPosition = koopa.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
 
@@ -74,7 +225,7 @@ const loop = setInterval(() => {
         clearInterval(loop);
     }
 
-}, 10);
+}, 10); */
 
 const resetGame = () => {
 
@@ -90,7 +241,7 @@ const resetGame = () => {
     const jump = () => {
         const mario = document.querySelector('.mario');
         mario.classList.add('jump');
-    
+
         setTimeout(() => {
             mario.classList.remove('jump');
         }, 500);
@@ -139,10 +290,10 @@ const resetGame = () => {
         const koopa = document.querySelector('.koopa');
         const mario = document.querySelector('.mario');
         const nuvens = document.querySelector('.clouds');
-        
+
         const koopaPosition = koopa.offsetLeft;
         const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
-    
+
         if (koopaPosition <= 88 && koopaPosition > 0 && marioPosition < 160) {
 
             mario.src = './assets/img/game-over.gif';
@@ -163,9 +314,9 @@ const resetGame = () => {
             koopa.style.setProperty('animation', 'none');
             koopa.style.setProperty('left', `${koopaPosition}px`);;
 
-            clearInterval(loop);
+            clearInterval();
         }
-    
+
     }, 10);
 
 }
