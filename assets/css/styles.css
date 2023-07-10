@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --primary-color: rgb(252,228,180);
+    --primary-color: rgb(252, 228, 180);
     --black-color: #000;
 }
 
@@ -23,12 +23,9 @@ a {
     color: var(--black-color);
 }
 
-header, footer {
+header,
+footer {
     text-align: center;
-}
-
-span {
-    color: white;
 }
 
 .mario-jump {
@@ -61,7 +58,6 @@ span {
 }
 
 .score-board {
-    background: rgba(3, 3, 3, 0.1);
     height: 3rem;
     width: 11rem;
     position: absolute;
@@ -73,11 +69,14 @@ span {
     font-size: 1.2rem;
     font-weight: bold;
     z-index: 2;
+    background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* animation: rainbow 8s ease infinite; */
 }
 
 .score {
     margin-right: 0.5rem;
-    color: #fff;
 }
 
 .mario-logo {
@@ -112,7 +111,7 @@ span {
 .mario {
     width: 3.8rem;
     position: absolute;
-    bottom: 4.3rem;
+    bottom: 4rem;
     left: 1rem;
 }
 
@@ -123,7 +122,7 @@ span {
 .koopa {
     display: none;
     position: absolute;
-    bottom: 4.3rem;
+    bottom: 4rem;
     width: 3.7rem;
 }
 
@@ -155,6 +154,10 @@ span {
     height: 15rem;
     color: var(--black-color);
     margin: 1rem 0.5rem;
+}
+
+.arrow {
+    font-size: large;
 }
 
 .contact {
@@ -203,7 +206,7 @@ span {
 
 @keyframes jump {
     0% {
-        bottom: 4.3rem;
+        bottom: 4rem;
     }
 
     40% {
@@ -219,7 +222,7 @@ span {
     }
 
     100% {
-        bottom: 4.3rem;
+        bottom: 4rem;
     }
 }
 
@@ -233,12 +236,17 @@ span {
     }
 }
 
-@keyframes mario-dies {
-    from {
-        left: 1rem;
+/* @keyframes rainbow {
+
+    0% {
+        background-position: 0% 50%;
     }
 
-    to {
-        left: 1.2rem;
+    50% {
+        background-position: 100% 25%;
     }
-}
+
+    100% {
+        background-position: 0% 50%;
+    }
+} */
