@@ -1,5 +1,19 @@
 const startGame = () => {
 
+    const koopa = document.querySelector('.koopa');
+    const mario = document.querySelector('.mario');
+    const nuvens = document.querySelector('.clouds');
+    const nuvensIntroOne = document.querySelector('.clouds-intro-one');
+    const nuvensIntroTwo = document.querySelector('.clouds-intro-two');
+    const startButton = document.querySelector('.start-button');
+    const refreshButton = document.querySelector('.refresh-button');
+    const marioLogo = document.querySelector('.mario-logo');
+    const score = document.querySelector('.score');
+    let count = 0;
+
+    /* const marioWidth = mario.style.width;
+    console.log(marioWidth); */
+
     const jump = () => {
         const mario = document.querySelector('.mario');
         mario.classList.add('jump');
@@ -14,17 +28,6 @@ const startGame = () => {
             jump();
         }
     });
-
-    const koopa = document.querySelector('.koopa');
-    const mario = document.querySelector('.mario');
-    const nuvens = document.querySelector('.clouds');
-    const nuvensIntroOne = document.querySelector('.clouds-intro-one');
-    const nuvensIntroTwo = document.querySelector('.clouds-intro-two');
-    const startButton = document.querySelector('.start-button');
-    const refreshButton = document.querySelector('.refresh-button');
-    const marioLogo = document.querySelector('.mario-logo');
-    const score = document.querySelector('.score');
-    let count = 0;
 
     marioLogo.style.setProperty('display', 'none');
 
@@ -57,8 +60,6 @@ const startGame = () => {
         const koopaPosition = koopa.offsetLeft;
         const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
 
-        console.log(koopaPosition);
-
         if (koopaPosition <= 110 && koopaPosition > 0 && marioPosition < 160) {
 
             gameOver.style.setProperty('background-image', 'url(./assets/img/game-over-background.png)');
@@ -70,8 +71,6 @@ const startGame = () => {
             koopa.src = './assets/img/koopa.png';
             koopa.style.setProperty('animation', 'none');
             koopa.style.setProperty('left', `${koopaPosition}px`);
-
-            console.log(`Bateu em ${koopaPosition} px`);
 
             mario.src = './assets/img/game-over.gif';
             mario.style.setProperty('animation', 'none');
@@ -162,7 +161,6 @@ const resetGame = () => {
 
             mario.src = './assets/img/game-over.gif';
             mario.style.setProperty('animation', 'none');
-            /* mario.style.setProperty('animation', 'mario-dies 180ms ease-in-out infinite'); */
             mario.style.setProperty('bottom', `${marioPosition}px`);
             mario.style.setProperty('z-index', '1');
             mario.style.setProperty('width', '3.6rem');
@@ -183,14 +181,14 @@ const resetGame = () => {
 
     }, 10);
 
-    setInterval(() => {
+    const counting = setInterval(() => {
 
         const koopaPosition = koopa.offsetLeft;
         const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
 
         if (koopaPosition <= 110 && koopaPosition > 0 && marioPosition < 160) {
-            clearInterval();
-            count = 0;
+
+            clearInterval(counting);
         }
 
         count++;
